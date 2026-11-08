@@ -2,6 +2,13 @@
 
 All notable changes follow [Semantic Versioning](https://semver.org).
 
+## 0.2.0 — 2026-11-09
+
+- Placement setting: `"top"` hangs the panel just under a top bar or island and slides it down out
+  of it; `"center"` (default) keeps it in the middle of the screen.
+- The overlay keeps out of other panels' reserved space, so it centers on the same axis as a bar or
+  island and does not cover them.
+
 ## 0.1.1 — 2026-11-09
 
 - Fixed: footer credit overlapped the "tested on" line; it now uses two lines.

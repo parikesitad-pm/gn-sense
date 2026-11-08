@@ -9,7 +9,9 @@ PanelWindow {
     id: win
     anchors { top: true; bottom: true; left: true; right: true }
     color: "transparent"
-    exclusiveZone: -1
+    // 0 = keep out of other panels' reserved space (bars, a top island), so the card centers on
+    // the same axis as they do and does not cover them.
+    exclusiveZone: 0
     visible: Sense.open || shown > 0.001
     WlrLayershell.namespace: "gn-sense"
     WlrLayershell.layer: WlrLayer.Overlay
@@ -28,7 +30,11 @@ PanelWindow {
 
     Rectangle {
         id: card
-        anchors.centerIn: parent
+        // placement "top": hangs just under a top bar or island and slides down out of it;
+        // "center": middle of the screen.
+        readonly property bool atTop: Sense.settings.placement === "top"
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: atTop ? Sense.settings.topGap - 16 * (1 - win.shown) : (parent.height - height) / 2
         width: 620
         height: col.implicitHeight + 40
         radius: 28
@@ -37,7 +43,7 @@ PanelWindow {
         border.color: Sense.profile === "performance" ? Theme.red : Theme.stroke
         Behavior on border.color { ColorAnimation { duration: 300 } }
         opacity: win.shown
-        scale: 0.96 + 0.04 * win.shown
+        scale: atTop ? 1 : 0.96 + 0.04 * win.shown
         focus: Sense.open
         Keys.onEscapePressed: Sense.open = false
         MouseArea { anchors.fill: parent }   // clicks on the card don't reach the backdrop

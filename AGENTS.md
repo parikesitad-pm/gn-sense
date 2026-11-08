@@ -38,6 +38,7 @@ Quickshell config. Unofficial; not affiliated with Acer.
 - Every QML type must be listed in `qmldir`; once it exists, unlisted files are not found.
 - Effects and their capabilities (color, speed, direction) live in `Sense.effects`; the UI reads them.
 - Settings are a `JsonAdapter` in `Sense.qml`; nested values (zones, links) are stored as strings.
+- `placement` (`center` or `top`) and `topGap` position the card; the window uses `exclusiveZone: 0` so it stays inside other panels' reserved space.
 - Wave and Neon use the keyboard's own color cycle and take no color; the preview shows their motion only.
 - Version and changes go in `CHANGELOG.md` (semver) in the same change.
 

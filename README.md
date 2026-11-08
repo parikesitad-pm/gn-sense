@@ -164,6 +164,10 @@ which already cover ASUS hardware.
 **Where are the settings?** In Quickshell's state directory for this config:
 `~/.local/state/quickshell/by-shell/<id>/settings.json`.
 
+**Can the panel open under my top bar or notch?** Set `"placement": "top"` in the settings file and
+adjust `"topGap"` (pixels below your bar). The default, `"center"`, opens it in the middle of the
+screen.
+
 **How heavy is it?** Measured on the AN515-56: 0% CPU while closed, about 5% of one core while
 the panel is open, about 140 MiB of memory.
 

@@ -118,6 +118,9 @@ Singleton {
             property int speed: 4
             property int direction: 1
             property bool follow: true
+            // "center" (middle of the screen) or "top" (under a top bar or island, topGap px down).
+            property string placement: "center"
+            property int topGap: 10
             // Lighting per power profile, as JSON. Defaults: Cruise = Wave, Trans-Am = red Breath.
             property string links: '{"balanced":{"effect":"wave","speed":4,"brightness":100},"performance":{"effect":"breath","color":"ff2e63","speed":4,"brightness":100}}'
         }
