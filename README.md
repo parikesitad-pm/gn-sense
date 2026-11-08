@@ -5,6 +5,11 @@ the keyboard's **N** key. An unofficial, NitroSense-style tool; not affiliated w
 
 Built with the [Celestial Being theme](https://github.com/parikesitad-pm/celestial-being).
 
+<p>
+  <img src="docs/screenshots/trans-am-breath.png" width="410" alt="gn-sense in Trans-Am with red Breath lighting">
+  <img src="docs/screenshots/static-zones.png" width="410" alt="gn-sense with four static zone colors">
+</p>
+
 - **Power:** Standby, Cruise, Trans-Am (power-saver, balanced, performance).
 - **Keyboard:** Static per-zone colors, Breath, Shifting, Zoom, Wave, Neon, Off, with brightness,
   speed, direction and a live preview.
