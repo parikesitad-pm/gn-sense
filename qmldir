@@ -1,0 +1,12 @@
+singleton Theme Theme.qml
+singleton Sense Sense.qml
+Panel Panel.qml
+Chip Chip.qml
+ColorPanel ColorPanel.qml
+HazardStripe HazardStripe.qml
+KeyboardPreview KeyboardPreview.qml
+ProfileLink ProfileLink.qml
+SectionLabel SectionLabel.qml
+ValueSlider ValueSlider.qml
+DirectionToggle DirectionToggle.qml
+Footer Footer.qml

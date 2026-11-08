@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Toggle the gn-sense panel, starting the Quickshell instance first if it is not running.
+if ! qs -c gn-sense ipc call sense toggle >/dev/null 2>&1; then
+  qs -c gn-sense -n -d >/dev/null 2>&1
+  for _ in 1 2 3 4 5 6 7 8 9 10; do
+    sleep 0.2
+    qs -c gn-sense ipc call sense open >/dev/null 2>&1 && exit 0
+  done
+  echo "gn-sense: could not start Quickshell config 'gn-sense'" >&2
+  exit 1
+fi
