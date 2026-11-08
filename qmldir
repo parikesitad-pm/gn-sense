@@ -10,3 +10,4 @@ SectionLabel SectionLabel.qml
 ValueSlider ValueSlider.qml
 DirectionToggle DirectionToggle.qml
 Footer Footer.qml
+SenseCard SenseCard.qml

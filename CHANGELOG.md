@@ -2,6 +2,12 @@
 
 All notable changes follow [Semantic Versioning](https://semver.org).
 
+## 0.3.0 — 2026-11-09
+
+- `SenseCard.qml`: the controls as one component another Quickshell shell can load, for example as
+  a sheet in a top island. `embedded: true` leaves out the title, caution tape and footer.
+- Settings file renamed to `gn-sense.json`; an existing `settings.json` is moved once on start.
+
 ## 0.2.0 — 2026-11-09
 
 - Placement setting: `"top"` hangs the panel just under a top bar or island and slides it down out

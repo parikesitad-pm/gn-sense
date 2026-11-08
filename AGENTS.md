@@ -27,7 +27,8 @@ Quickshell config. Unofficial; not affiliated with Acer.
 | `shell.qml` | Root: the panel and the `sense` IPC target |
 | `Sense.qml` | Singleton: profile, lighting state, profile links, settings file, device writes |
 | `Theme.qml` | Singleton: colors and font |
-| `Panel.qml` | The overlay window and card layout |
+| `Panel.qml` | The standalone overlay window around `SenseCard` |
+| `SenseCard.qml` | All controls as one component; other shells embed it (`embedded: true`) |
 | `KeyboardPreview.qml`, `ColorPanel.qml`, `DirectionToggle.qml`, `ProfileLink.qml` | Card sections |
 | `Chip.qml`, `ValueSlider.qml`, `SectionLabel.qml`, `HazardStripe.qml`, `Footer.qml` | Small building blocks |
 | `scripts/rgb.sh` | Writes payloads to the facer devices |

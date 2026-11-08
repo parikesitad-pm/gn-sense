@@ -162,7 +162,7 @@ and a wrong value can overheat the laptop.
 which already cover ASUS hardware.
 
 **Where are the settings?** In Quickshell's state directory for this config:
-`~/.local/state/quickshell/by-shell/<id>/settings.json`.
+`~/.local/state/quickshell/by-shell/<id>/gn-sense.json`.
 
 **Can the panel open under my top bar or notch?** Set `"placement": "top"` in the settings file and
 adjust `"topGap"` (pixels below your bar). The default, `"center"`, opens it in the middle of the
@@ -170,6 +170,23 @@ screen.
 
 **How heavy is it?** Measured on the AN515-56: 0% CPU while closed, about 5% of one core while
 the panel is open, about 140 MiB of memory.
+
+## Embed in your shell
+
+If you run your own Quickshell shell, you can show gn-sense inside it instead of in its own window,
+for example as a sheet in a top island. Load the card with a `Loader`:
+
+```qml
+Loader {
+    source: "file://" + Quickshell.env("HOME") + "/.config/quickshell/gn-sense/SenseCard.qml"
+    onLoaded: item.embedded = true   // your panel draws the title and frame
+}
+```
+
+Set `item.active` to whether the card is on screen, so its animations stop when hidden. The card
+restores the saved lighting when it loads, so loading it at startup replaces `qs -c gn-sense -n -d`;
+run only one of the two, or both will write to the keyboard. Settings live in your shell's state
+directory as `gn-sense.json`.
 
 ## Docs
 

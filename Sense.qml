@@ -99,9 +99,17 @@ Singleton {
     function run(cmd) { Quickshell.execDetached(cmd) }
 
     // ───────── settings ─────────
+    // 0.2 and older saved to settings.json; move it once so existing lighting and links carry over.
+    // The settings file is opened only after this ran, so defaults never overwrite the old file.
+    property string storePath: ""
+    Process {
+        running: true
+        command: ["sh", "-c", 'mkdir -p "$1" && cd "$1" && if [ ! -f gn-sense.json ] && [ -f settings.json ]; then mv settings.json gn-sense.json; fi', "sh", Quickshell.stateDir]
+        onExited: s.storePath = Quickshell.stateDir + "/gn-sense.json"
+    }
     FileView {
         id: store
-        path: Quickshell.stateDir + "/settings.json"
+        path: s.storePath
         watchChanges: true
         onFileChanged: reload()
         onAdapterUpdated: writeAdapter()
