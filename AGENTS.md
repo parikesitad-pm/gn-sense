@@ -32,6 +32,7 @@ Quickshell config. Unofficial; not affiliated with Acer.
 | `Chip.qml`, `ValueSlider.qml`, `SectionLabel.qml`, `HazardStripe.qml`, `Footer.qml` | Small building blocks |
 | `scripts/rgb.sh` | Writes payloads to the facer devices |
 | `bin/gn-sense` | Launcher: toggles the panel, starts Quickshell if needed |
+| `docs/` | Keyboard protocol, adding a model |
 
 ## Conventions
 - Every QML type must be listed in `qmldir`; once it exists, unlisted files are not found.

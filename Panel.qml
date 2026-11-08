@@ -105,22 +105,34 @@ PanelWindow {
                     }
                 }
             }
-            ColorPanel { Layout.fillWidth: true; visible: Sense.effect.color !== "" && Sense.ready }
-            ValueSlider {
+            // Settings for the chosen effect, grouped in one inset panel.
+            Rectangle {
                 Layout.fillWidth: true
-                visible: Sense.effect.k !== "off" && Sense.ready
-                label: "Brightness"; from: 0; to: 100; suffix: "%"
-                value: Sense.settings.brightness
-                onMoved: v => Sense.set("brightness", v)
+                visible: Sense.ready && Sense.effect.k !== "off"
+                implicitHeight: fx.implicitHeight + 28
+                radius: 18
+                color: Theme.tile
+                ColumnLayout {
+                    id: fx
+                    anchors { left: parent.left; right: parent.right; top: parent.top; margins: 14 }
+                    spacing: 12
+                    ColorPanel { Layout.fillWidth: true; visible: Sense.effect.color !== "" }
+                    ValueSlider {
+                        Layout.fillWidth: true
+                        label: "Brightness"; from: 0; to: 100; suffix: "%"
+                        value: Sense.settings.brightness
+                        onMoved: v => Sense.set("brightness", v)
+                    }
+                    ValueSlider {
+                        Layout.fillWidth: true
+                        visible: Sense.effect.speed
+                        label: "Speed"; from: 1; to: 9
+                        value: Sense.settings.speed
+                        onMoved: v => Sense.set("speed", v)
+                    }
+                    DirectionToggle { Layout.fillWidth: true; visible: Sense.effect.dir }
+                }
             }
-            ValueSlider {
-                Layout.fillWidth: true
-                visible: Sense.effect.speed && Sense.ready
-                label: "Speed"; from: 1; to: 9
-                value: Sense.settings.speed
-                onMoved: v => Sense.set("speed", v)
-            }
-            DirectionToggle { Layout.fillWidth: true; visible: Sense.effect.dir && Sense.ready }
             ProfileLink { Layout.fillWidth: true; visible: Sense.ready }
             Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 1; color: Theme.stroke }
             Footer { Layout.fillWidth: true }

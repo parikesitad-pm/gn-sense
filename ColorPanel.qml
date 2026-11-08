@@ -55,22 +55,22 @@ ColumnLayout {
         }
     }
 
-    Grid {
+    // Swatches and the hex field share one row.
+    RowLayout {
         Layout.fillWidth: true
-        columns: 12
         spacing: 6
         Repeater {
             model: Sense.swatches
             delegate: Rectangle {
                 required property string modelData
                 readonly property bool active: panel.current === modelData
-                width: (panel.width - 66) / 12
-                height: width
-                radius: width / 2
+                Layout.preferredWidth: 26
+                Layout.preferredHeight: 26
+                radius: 13
                 color: "#" + modelData
                 border.width: active ? 2 : 0
                 border.color: Theme.text
-                scale: sw.pressed ? 0.9 : (sw.containsMouse ? 1.1 : 1)
+                scale: sw.pressed ? 0.9 : (sw.containsMouse ? 1.12 : 1)
                 Behavior on scale { NumberAnimation { duration: 140; easing.type: Easing.OutCubic } }
                 MouseArea {
                     id: sw
@@ -81,22 +81,20 @@ ColumnLayout {
                 }
             }
         }
-    }
-
-    RowLayout {
-        spacing: 8
+        Item { Layout.fillWidth: true }
         Rectangle {
-            Layout.preferredWidth: 28; Layout.preferredHeight: 28; radius: 8
-            color: "#" + panel.current
-            border.width: 1; border.color: Theme.stroke
-        }
-        Rectangle {
-            Layout.preferredWidth: 120; Layout.preferredHeight: 28; radius: 8
+            Layout.preferredWidth: 96; Layout.preferredHeight: 28; radius: 8
             color: Theme.tile
-            border.width: hex.activeFocus ? 1 : 0; border.color: Theme.gn
+            border.width: 1; border.color: hex.activeFocus ? Theme.gn : Theme.stroke
+            Rectangle {
+                id: chipColor
+                anchors { left: parent.left; leftMargin: 6; verticalCenter: parent.verticalCenter }
+                width: 16; height: 16; radius: 4
+                color: "#" + panel.current
+            }
             TextInput {
                 id: hex
-                anchors.fill: parent; anchors.leftMargin: 10; anchors.rightMargin: 10
+                anchors { left: chipColor.right; leftMargin: 6; right: parent.right; rightMargin: 6; top: parent.top; bottom: parent.bottom }
                 verticalAlignment: TextInput.AlignVCenter
                 text: "#" + panel.current
                 font.family: Theme.font; font.pixelSize: 12
@@ -106,10 +104,6 @@ ColumnLayout {
                 validator: RegularExpressionValidator { regularExpression: /#?[0-9a-fA-F]{0,6}/ }
                 onAccepted: if (text.replace("#", "").length === 6) panel.pick(text)
             }
-        }
-        Text {
-            text: "Hex, then Enter"
-            font.family: Theme.font; font.pixelSize: 11; color: Theme.subtext
         }
     }
 }

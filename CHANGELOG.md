@@ -2,6 +2,12 @@
 
 All notable changes follow [Semantic Versioning](https://semver.org).
 
+## 0.1.1 — 2026-11-09
+
+- Fixed: footer credit overlapped the "tested on" line; it now uses two lines.
+- Swatches and the hex field share one row; the settings for the chosen effect sit in one panel.
+- Docs: keyboard protocol and adding a model.
+
 ## 0.1.0 — 2026-11-09
 
 First release.

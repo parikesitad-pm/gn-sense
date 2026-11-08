@@ -28,9 +28,8 @@ Tested on:
 | Nitro 5 AN515-56 | yes | yes | keycode 433 |
 
 The [facer compatibility table](https://github.com/JafarAkhondali/acer-predator-turbo-and-rgb-keyboard-linux-module)
-lists the Nitro and Predator models known to work with the driver. To add your model here, open an
-issue with the model name, the output of `ls /dev/acer-gkbbl*`, and what the N key prints in
-`sudo evtest`.
+lists the Nitro and Predator models known to work with the driver. To add yours, follow
+[Adding a model](docs/adding-a-model.md).
 
 ## Requirements
 
@@ -162,6 +161,11 @@ which already cover ASUS hardware.
 
 **How heavy is it?** Measured on the AN515-56: 0% CPU while closed, about 5% of one core while
 the panel is open, about 140 MiB of memory.
+
+## Docs
+
+- [Keyboard protocol](docs/protocol.md): the byte payloads `scripts/rgb.sh` writes to the driver.
+- [Adding a model](docs/adding-a-model.md): check the driver, find the N key code, report a model.
 
 ## Uninstall
 
