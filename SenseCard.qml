@@ -7,7 +7,7 @@ import QtQuick.Layouts
 ColumnLayout {
     id: card
     // embedded: hosted inside another shell's panel (for example a top island), which draws its own
-    // title, caution tape and frame, so the card leaves those and the footer out.
+    // title, caution tape and frame, so the card leaves those out.
     property bool embedded: false
     // Animations run only while the card is on screen.
     property bool active: Sense.open
@@ -101,6 +101,6 @@ ColumnLayout {
         }
     }
     ProfileLink { Layout.fillWidth: true; visible: Sense.ready }
-    Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 1; color: Theme.stroke; visible: !card.embedded }
-    Footer { Layout.fillWidth: true; visible: !card.embedded }
+    Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 1; color: Theme.stroke }
+    Footer { Layout.fillWidth: true }
 }

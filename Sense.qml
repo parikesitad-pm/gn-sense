@@ -93,9 +93,12 @@ Singleton {
         const args = e.k === "off" ? ["off"]
             : e.k === "static" ? ["zones"].concat(zones, [b])
             : ["effect", String(e.mode), String(cfg.speed), b, cfg.color, String(cfg.direction)]
-        run([Quickshell.shellDir + "/scripts/rgb.sh"].concat(args))
+        run([rgbScript].concat(args))
     }
     Timer { id: sync; interval: 60; onTriggered: s.apply() }
+    // Resolved next to this file, not from Quickshell.shellDir: when another shell embeds the card,
+    // shellDir is that shell's folder, which has no scripts/rgb.sh.
+    readonly property string rgbScript: decodeURIComponent(Qt.resolvedUrl("scripts/rgb.sh").toString().replace(/^file:\/\//, ""))
     function run(cmd) { Quickshell.execDetached(cmd) }
 
     // ───────── settings ─────────

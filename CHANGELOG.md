@@ -2,6 +2,12 @@
 
 All notable changes follow [Semantic Versioning](https://semver.org).
 
+## 0.3.1 — 2026-11-09
+
+- Fixed: an embedded card never reached the keyboard (every effect, Off included). `rgb.sh` was
+  looked up in the host shell's folder; it is now resolved next to `Sense.qml`.
+- The footer shows in the embedded card too.
+
 ## 0.3.0 — 2026-11-09
 
 - `SenseCard.qml`: the controls as one component another Quickshell shell can load, for example as
